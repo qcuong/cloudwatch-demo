@@ -30,16 +30,7 @@ public class CloudWatchMetricConfig {
             .region(region)
             .build();
 
-
     private Double loggedInUsers = 0D;
-
-    private final String appInstance = UUID.randomUUID().toString();
-    private final String logGroup = "cloudwatch-demo";
-    private final String logStream = MessageFormat.format("appInstance/{0}", appInstance);
-
-    public CloudWatchMetricConfig() {
-
-    }
 
     @Scheduled(fixedRate = 1000)
     public void sendCloudWatchMetric() {
@@ -66,14 +57,15 @@ public class CloudWatchMetricConfig {
 
 //            cw.putMetricData(request);
 
-
-            log.info("Current time {}", Instant.now());
-
+            if (Math.random() < 0.5) {
+                log.error("There was an exception at {}", Instant.now());
+            } else {
+                log.info("Current time {}", Instant.now());
+            }
         } catch (CloudWatchException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-
 
     }
 

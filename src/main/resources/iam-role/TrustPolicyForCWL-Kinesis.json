@@ -1,0 +1,10 @@
+{
+  "Statement": {
+    "Effect": "Allow",
+    "Principal": { "Service": "logs.amazonaws.com" },
+    "Action": "sts:AssumeRole",
+    "Condition": {
+      "StringLike": { "aws:SourceArn": "arn:aws:logs:ap-southeast-2:790756065445:*" }
+    }
+  }
+}

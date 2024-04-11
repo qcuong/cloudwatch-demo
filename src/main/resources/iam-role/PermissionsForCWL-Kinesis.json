@@ -1,0 +1,9 @@
+{
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "kinesis:PutRecord",
+      "Resource": "arn:aws:kinesis:ap-southeast-2:790756065445:stream/LogAggregationKDS"
+    }
+  ]
+}
